@@ -126,6 +126,21 @@
   <p id="error-msg"></p>
 </div>
 
+<script>
+  // Detectar tecla Enter en los inputs
+  document.addEventListener("DOMContentLoaded", () => {
+    const inputs = document.querySelectorAll("#username, #password");
+    inputs.forEach(input => {
+      input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault(); // evita el submit por defecto
+          login(); // ejecuta la función de login
+        }
+      });
+    });
+  });
+</script>
+
 <!-- === DASHBOARD === -->
 <div id="dashboard-container" class="dashboard hidden">
   <div class="sidebar">
@@ -234,6 +249,36 @@
       setTimeout(() => { iframe.src = src; }, 300);
     }
   }
-</script>
+
+  const overlay = document.createElement("div");
+    Object.assign(overlay.style, {
+      position: "fixed", top: 0, left: 0, width: "100%", height: "100%",
+      background: "rgba(0,0,0,0.85)", color: "#D4AF37", fontSize: "22px",
+      fontWeight: "600", display: "flex", alignItems: "center",
+      justifyContent: "center", zIndex: "9999", visibility: "hidden"
+    });
+    overlay.innerText = "⏳ Generando PDF...";
+    document.body.appendChild(overlay);
+
+    document.getElementById("pdfBtn").addEventListener("click", () => {
+      const sectionActiva = document.querySelector("section.active iframe");
+      if (!sectionActiva) return alert("⚠️ No hay dashboard activo.");
+      overlay.style.visibility = "visible";
+      sectionActiva.contentWindow.postMessage({ action: "capture_dashboard", type: "pdf" }, "*");
+    });
+
+    window.addEventListener("message", (event) => {
+      if (!event.data || event.data.action !== "capture_image") return;
+      const { jsPDF } = window.jspdf;
+      const imgData = event.data.img;
+      const pdf = new jsPDF("l", "pt", "a4");
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      pdf.addImage(imgData, "PNG", 0, 0, pageWidth, pageHeight);
+      pdf.save("OBL_Digital_Dashboard.pdf");
+      overlay.style.visibility = "hidden";
+    });
+  </script>
 </body>
 </html>
+
