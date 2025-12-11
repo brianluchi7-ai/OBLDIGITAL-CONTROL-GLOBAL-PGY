@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* === GENERAL === */
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -17,8 +16,6 @@
       height: 100vh;
       overflow: hidden;
     }
-
-    /* === LOGIN === */
     .login-container {
       display: flex;
       flex-direction: column;
@@ -27,21 +24,16 @@
       height: 100vh;
       padding: 20px;
     }
-
     .login-container img {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
+      width: 130px; height: 130px; border-radius: 50%;
       margin-bottom: 25px;
       box-shadow: 0 0 25px rgba(255, 170, 0, 0.7);
       transition: 0.4s ease;
     }
-
     .login-container img:hover {
       transform: scale(1.08);
       box-shadow: 0 0 45px rgba(255, 200, 60, 0.9);
     }
-
     .login-container input {
       display: block;
       width: 260px;
@@ -54,7 +46,6 @@
       text-align: center;
       outline: none;
     }
-
     .login-container button {
       background-color: #D4AF37;
       color: #000;
@@ -66,164 +57,62 @@
       margin-top: 10px;
       transition: 0.3s;
     }
-
-    .login-container button:hover {
-      background-color: #f0d97b;
-    }
-
-    #error-msg {
-      color: #ff4d4d;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .hidden {
-      display: none;
-    }
+    .login-container button:hover { background-color: #f0d97b; }
+    #error-msg { color: #ff4d4d; font-weight: bold; margin-top: 10px; }
+    .hidden { display: none; }
 
     /* === DASHBOARD === */
-    .dashboard {
-      display: flex;
-      height: 100vh;
-      overflow: hidden;
-    }
-
+    .dashboard { display: flex; height: 100vh; overflow: hidden; }
     .sidebar {
-      width: 220px;
-      background-color: #141414;
-      border-right: 2px solid #D4AF37;
-      padding-top: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex-shrink: 0;
+      width: 220px; background-color: #141414; border-right: 2px solid #D4AF37;
+      padding-top: 20px; display: flex; flex-direction: column; align-items: center;
     }
-
     .sidebar .logo img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
+      width: 100px; height: 100px; border-radius: 50%;
       box-shadow: 0 0 20px rgba(212,175,55,0.6);
       transition: 0.3s;
     }
-
     .sidebar .logo img:hover {
       transform: scale(1.08);
       box-shadow: 0 0 40px rgba(212,175,55,0.9);
     }
-
-    .sidebar h2 {
-      color: #D4AF37;
-      margin-top: 10px;
-    }
-
-    .menu {
-      list-style: none;
-      padding: 0;
-      width: 100%;
-    }
-
+    .sidebar h2 { color: #D4AF37; margin-top: 10px; }
+    .menu { list-style: none; padding: 0; width: 100%; }
     .menu li {
-      padding: 12px 20px;
-      cursor: pointer;
-      color: #f2f2f2;
+      padding: 12px 20px; cursor: pointer; color: #f2f2f2;
       transition: 0.3s;
     }
-
-    .menu li:hover,
-    .menu li.active {
-      background-color: #D4AF37;
-      color: #000;
-      font-weight: bold;
+    .menu li:hover, .menu li.active {
+      background-color: #D4AF37; color: #000; font-weight: bold;
     }
-
-    .main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
+    .main { flex: 1; display: flex; flex-direction: column; }
     .topbar {
-      height: 60px;
-      background-color: #141414;
+      height: 60px; background-color: #141414;
       border-bottom: 2px solid #D4AF37;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-      gap: 10px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 20px; gap: 10px;
     }
-
-    /* === BOTÓN PDF === */
-    .buttons button {
-      background-color: #D4AF37;
-      border: none;
-      color: #000;
-      font-weight: bold;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
+    .buttons button, .right-button button {
+      background-color: #D4AF37; border: none; color: #000;
+      font-weight: bold; padding: 8px 12px; border-radius: 6px;
+      cursor: pointer; transition: 0.3s;
     }
+    .buttons button:hover, .right-button button:hover { background-color: #f0d97b; }
 
-    .buttons button:hover {
-      background-color: #f0d97b;
-    }
+    section { flex: 1; display: none; height: calc(100vh - 60px); }
+    section.active { display: block; }
+    section iframe { width: 100%; height: 100%; border: none; }
 
-    .right-button button {
-      background-color: #D4AF37;
-      border: none;
-      color: #000;
-      font-weight: bold;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .right-button button:hover {
-      background-color: #f0d97b;
-    }
-
-    /* === SECCIONES === */
-    section {
-      flex: 1;
-      display: none;
-      height: calc(100vh - 60px);
-    }
-
-    section.active {
-      display: block;
-    }
-
-    section iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* === OVERLAY === */
     #logout-overlay {
-      position: fixed;
-      top: 0; left: 0;
+      position: fixed; top: 0; left: 0;
       width: 100%; height: 100%;
       background-color: #0d0d0d;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #D4AF37;
-      font-size: 24px;
-      letter-spacing: 2px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease;
+      display: flex; align-items: center; justify-content: center;
+      color: #D4AF37; font-size: 24px; letter-spacing: 2px;
+      opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
       z-index: 9999;
     }
-
-    #logout-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
+    #logout-overlay.active { opacity: 1; visibility: visible; }
   </style>
 </head>
 
@@ -237,161 +126,114 @@
   <p id="error-msg"></p>
 </div>
 
-<script>
-  // Detectar tecla Enter en los inputs
-  document.addEventListener("DOMContentLoaded", () => {
-    const inputs = document.querySelectorAll("#username, #password");
-    inputs.forEach(input => {
-      input.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-          event.preventDefault(); // evita el submit por defecto
-          login(); // ejecuta la función de login
-        }
-      });
-    });
-  });
-</script>
-
-
-  <!-- === DASHBOARD === -->
-  <div id="dashboard-container" class="dashboard hidden">
-    <div class="sidebar">
-      <div class="logo">
-        <img src="assets/logo.png" alt="OBL Digital" />
-      </div>
-      <h2>Control Global</h2>
-      <ul class="menu">
-        <li onclick="mostrarSeccion('dep_ftd_dashboard')">📊 DEP FTD Dashboard PGY</li>
-        <li onclick="mostrarSeccion('dep_rtn_dashboard')">📈 DEP RTN Dashboard PGY</li>
-        <li onclick="mostrarSeccion('general_ltv_dashboard')">💹 GENERAL LTV Dashboard PGY</li>
-      </ul>
+<!-- === DASHBOARD === -->
+<div id="dashboard-container" class="dashboard hidden">
+  <div class="sidebar">
+    <div class="logo">
+      <img src="assets/logo.png" alt="OBL Digital" />
     </div>
-
-    <div class="main">
-      <div class="topbar">
-        <div class="buttons">
-          <button id="pdfBtn">📄 PDF</button>
-        </div>
-        <div class="right-button">
-          <button onclick="logout()">🚪 Log Out</button>
-        </div>
-      </div>
-
-      <section id="dep_ftd_dashboard" class="active">
-        <iframe src="https://obldigital-dashboard-pgyftd.onrender.com"></iframe>
-      </section>
-
-      <section id="dep_rtn_dashboard">
-        <iframe id="iframe_rtn" src="https://obldigital-dashboard-pgyrtn.onrender.com"></iframe>
-      </section>
-
-      <section id="general_ltv_dashboard">
-        <iframe src="https://obldigital-dashboard-pgyltv.onrender.com"></iframe>
-      </section>
-    </div>
+    <h2>Control Global</h2>
+    <ul class="menu">
+      <li onclick="mostrarSeccion('dep_ftd_dashboard')">📊 DEP FTD Dashboard PGY</li>
+      <li onclick="mostrarSeccion('dep_rtn_dashboard')">📈 DEP RTN Dashboard PGY</li>
+      <li onclick="mostrarSeccion('general_ltv_dashboard')">💹 GENERAL LTV Dashboard PGY</li>
+      <li onclick="mostrarSeccion('comisiones_dashboard')">💵 COMISIONES Dashboard PGY</li>
+    </ul>
   </div>
 
-  <div id="logout-overlay">Cerrando sesión...</div>
+  <div class="main">
+    <div class="topbar">
+      <div class="buttons">
+        <button id="pdfBtn">📄 PDF</button>
+      </div>
+      <div class="right-button">
+        <button onclick="logout()">🚪 Log Out</button>
+      </div>
+    </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <section id="dep_ftd_dashboard" class="active">
+      <iframe src="https://obldigital-dashboard-pgyftd.onrender.com"></iframe>
+    </section>
+    <section id="dep_rtn_dashboard">
+      <iframe src="https://obldigital-dashboard-pgyrtn.onrender.com"></iframe>
+    </section>
+    <section id="general_ltv_dashboard">
+      <iframe src="https://obldigital-dashboard-pgyltv.onrender.com"></iframe>
+    </section>
+    <section id="comisiones_dashboard">
+      <iframe src="https://comisones-pgy.onrender.com"></iframe>
+    </section>
+  </div>
+</div>
 
-  <script>
-    const users = {
-      "ADMINPGY@DASHBOARD.NEX": { password: "ADMIN32100", role: "all" },
-      "LEADERSFTDPGY@DASHBOARD.NEX": { password: "FTD32100", role: "ftd" },
-      "LEADERSRTNPGY@DASHBOARD.NEX": { password: "RTN32100", role: "rtn" },
-      "LEADERLTVPGY@DASHBOARD.NEX": { password: "LTV32100", role: "ltv" }
+<div id="logout-overlay">Cerrando sesión...</div>
+
+<script>
+  const users = {
+    "ADMINPGY@DASHBOARD.NEX": { password: "ADMIN32100", role: "all" },
+    "LEADERSFTDPGY@DASHBOARD.NEX": { password: "FTD32100", role: "ftd" },
+    "LEADERSRTNPGY@DASHBOARD.NEX": { password: "RTN32100", role: "rtn" },
+    "LEADERLTVPGY@DASHBOARD.NEX": { password: "LTV32100", role: "ltv" },
+    "COMISIONESPGY@DASHBOARD.NEX": { password: "COM32100", role: "com" }
+  };
+
+  function login() {
+    const u = document.getElementById("username").value.trim().toUpperCase();
+    const p = document.getElementById("password").value.trim();
+    const err = document.getElementById("error-msg");
+    if (users[u] && users[u].password === p) {
+      localStorage.setItem("user", u);
+      showDashboard();
+    } else {
+      err.innerText = "Usuario o contraseña incorrectos.";
+    }
+  }
+
+  function logout() {
+    const overlay = document.getElementById("logout-overlay");
+    overlay.classList.add("active");
+    setTimeout(() => {
+      localStorage.clear();
+      sessionStorage.clear();
+      document.querySelectorAll("iframe").forEach(f => f.src = "about:blank");
+      overlay.classList.remove("active");
+      window.location.reload();
+    }, 800);
+  }
+
+  function showDashboard() {
+    const user = localStorage.getItem("user");
+    if (!user || !users[user]) return logout();
+    document.getElementById("login-container").classList.add("hidden");
+    document.getElementById("dashboard-container").classList.remove("hidden");
+    const role = users[user].role;
+    const sections = {
+      ftd: document.querySelector("li[onclick*='dep_ftd_dashboard']"),
+      rtn: document.querySelector("li[onclick*='dep_rtn_dashboard']"),
+      ltv: document.querySelector("li[onclick*='general_ltv_dashboard']"),
+      com: document.querySelector("li[onclick*='comisiones_dashboard']")
     };
+    Object.values(sections).forEach(i => i.style.display = "none");
+    document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
 
-    function login() {
-      const u = document.getElementById("username").value.trim().toUpperCase();
-      const p = document.getElementById("password").value.trim();
-      const err = document.getElementById("error-msg");
-      if (users[u] && users[u].password === p) {
-        localStorage.setItem("user", u);
-        showDashboard();
-      } else {
-        err.innerText = "Usuario o contraseña incorrectos.";
-      }
+    if (role === "ftd") { sections.ftd.style.display = "block"; document.getElementById("dep_ftd_dashboard").classList.add("active"); }
+    else if (role === "rtn") { sections.rtn.style.display = "block"; document.getElementById("dep_rtn_dashboard").classList.add("active"); }
+    else if (role === "ltv") { sections.ltv.style.display = "block"; document.getElementById("general_ltv_dashboard").classList.add("active"); }
+    else if (role === "com") { sections.com.style.display = "block"; document.getElementById("comisiones_dashboard").classList.add("active"); }
+    else { Object.values(sections).forEach(i => i.style.display = "block"); document.getElementById("dep_ftd_dashboard").classList.add("active"); }
+  }
+
+  function mostrarSeccion(id) {
+    document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+    const s = document.getElementById(id);
+    s.classList.add("active");
+    const iframe = s.querySelector("iframe");
+    if (iframe) {
+      const src = iframe.src;
+      iframe.src = "";
+      setTimeout(() => { iframe.src = src; }, 300);
     }
-
-    function logout() {
-      const overlay = document.getElementById("logout-overlay");
-      overlay.classList.add("active");
-      setTimeout(() => {
-        localStorage.clear();
-        sessionStorage.clear();
-        document.querySelectorAll("iframe").forEach(f => f.src = "about:blank");
-        overlay.classList.remove("active");
-        window.location.reload();
-      }, 800);
-    }
-
-    function showDashboard() {
-      const user = localStorage.getItem("user");
-      if (!user || !users[user]) return logout();
-      document.getElementById("login-container").classList.add("hidden");
-      document.getElementById("dashboard-container").classList.remove("hidden");
-      const role = users[user].role;
-      const sections = {
-        ftd: document.querySelector("li[onclick*='dep_ftd_dashboard']"),
-        rtn: document.querySelector("li[onclick*='dep_rtn_dashboard']"),
-        ltv: document.querySelector("li[onclick*='general_ltv_dashboard']")
-      };
-      Object.values(sections).forEach(i => i.style.display = "none");
-      document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-      if (role === "ftd") { sections.ftd.style.display = "block"; document.getElementById("dep_ftd_dashboard").classList.add("active"); }
-      else if (role === "rtn") { sections.rtn.style.display = "block"; document.getElementById("dep_rtn_dashboard").classList.add("active"); }
-      else if (role === "ltv") { sections.ltv.style.display = "block"; document.getElementById("general_ltv_dashboard").classList.add("active"); }
-      else { Object.values(sections).forEach(i => i.style.display = "block"); document.getElementById("dep_ftd_dashboard").classList.add("active"); }
-    }
-
-    function mostrarSeccion(id) {
-      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
-      const s = document.getElementById(id);
-      s.classList.add("active");
-      const iframe = s.querySelector("iframe");
-      if (iframe) {
-        const src = iframe.src;
-        iframe.src = "";
-        setTimeout(() => { iframe.src = src; }, 300);
-      }
-    }
-
-    const overlay = document.createElement("div");
-    Object.assign(overlay.style, {
-      position: "fixed", top: 0, left: 0, width: "100%", height: "100%",
-      background: "rgba(0,0,0,0.85)", color: "#D4AF37", fontSize: "22px",
-      fontWeight: "600", display: "flex", alignItems: "center",
-      justifyContent: "center", zIndex: "9999", visibility: "hidden"
-    });
-    overlay.innerText = "⏳ Generando PDF...";
-    document.body.appendChild(overlay);
-
-    document.getElementById("pdfBtn").addEventListener("click", () => {
-      const sectionActiva = document.querySelector("section.active iframe");
-      if (!sectionActiva) return alert("⚠️ No hay dashboard activo.");
-      overlay.style.visibility = "visible";
-      sectionActiva.contentWindow.postMessage({ action: "capture_dashboard", type: "pdf" }, "*");
-    });
-
-    window.addEventListener("message", (event) => {
-      if (!event.data || event.data.action !== "capture_image") return;
-      const { jsPDF } = window.jspdf;
-      const imgData = event.data.img;
-      const pdf = new jsPDF("l", "pt", "a4");
-      const pageWidth = pdf.internal.pageSize.getWidth();
-      const pageHeight = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, "PNG", 0, 0, pageWidth, pageHeight);
-      pdf.save("OBL_Digital_Dashboard.pdf");
-      overlay.style.visibility = "hidden";
-    });
-  </script>
+  }
+</script>
 </body>
 </html>
-
-
-
-
-
